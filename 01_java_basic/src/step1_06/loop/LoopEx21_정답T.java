@@ -1,4 +1,3 @@
-// 2020-10-16 금 15:00-15:03
 package step1_06.loop;
 
 /*
@@ -20,13 +19,21 @@ package step1_06.loop;
  * ...
  */
 
-public class LoopEx21_정답 {
+public class LoopEx21_정답T {
 
 	public static void main(String[] args) {
-		for (int i = 2; i < 10; i++) {
-			System.out.printf("=== %d단 === \n", i);
-			for (int j = 1; j < 10; j++) 
-				System.out.printf("%d X %d = %d\n", i, j, i*j);
+		
+		
+		for(int i=2; i<10; i++) {
+			
+			System.out.println("============" + i+ "단==============");
+			
+			for(int j=1; j<10; j++) {
+				System.out.println(i + " X " + j + " = " + (i*j));
+			}
+			
 		}
+
 	}
+	
 }
