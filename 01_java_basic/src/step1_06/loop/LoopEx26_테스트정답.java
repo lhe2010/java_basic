@@ -40,7 +40,7 @@ public class LoopEx26_테스트정답 {
 		int cnt = 1;
 		
 		do {
-			System.out.print("입력 : ");
+			System.out.printf("%d번째 입력 : ", turn);
 			getNum = scan.nextInt();
 			if(getNum == key && cnt == 1) {
 				numPlace = turn;
