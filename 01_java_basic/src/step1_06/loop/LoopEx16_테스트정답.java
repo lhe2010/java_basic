@@ -1,5 +1,7 @@
+// 2020-11-04 수 2교시 16:27-16:50
 package step1_06.loop;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /*
@@ -17,7 +19,7 @@ import java.util.Scanner;
 public class LoopEx16_테스트정답 {
 
 	public static void main(String[] args) {
-		
+		Random ran = new Random();
 		Scanner scan = new Scanner(System.in);
 		
 		// 목적지(destination)
@@ -36,30 +38,67 @@ public class LoopEx16_테스트정답 {
 		
 		// 요금
 		int fee = 0;
-		
+		int move = 0;
+
+		desX = ran.nextInt(20)-10;
+		desY = ran.nextInt(20)-10;
+		System.out.printf("desX=%d, desY=%d", desX, desY);
 		boolean isRun = true;
 		while(isRun) {
 			
-			System.out.println("= 카카오 택시 =");
+			System.out.println("\n= 카카오 택시 =");
 			System.out.println("목적지 : " + desX + "," + desY);
 			System.out.println("현위치 : " + x + "," + y);
 			System.out.println("방   향 : " + dir);
 			System.out.println("속   도 : " + speed);
-			System.out.println("============");
+			System.out.println("========================");
 			
-			System.out.println("1.방향설정");
-			System.out.println("2.속도설정");
+			System.out.println("1.방향설정 : 동(1)서(2)남(3)북(4)");
+			System.out.println("2.속도설정 : 1~3까지만 가능");
 			System.out.println("3.이동하기");
 			
 			System.out.print("메뉴 선택 : ");
 			int sel = scan.nextInt();
 			
-			if(sel == 1) { // 방향설정
+			if(sel == 1) { 			// 방향 설정
 				System.out.print("\t방향을 설정해주세요: ");
 				dir = scan.nextInt();
+				if(!(dir >= 1 && dir <= 4)) {
+					System.out.println("\t잘못된 방향값");
+					continue;
+				}
+			} else if(sel == 2) { 	// 속도 설정  
+				System.out.print("\t속도를 설정해주세요: ");
+				speed = scan.nextInt();
+				if(!(speed >= 1 && speed <= 3)) {
+					System.out.println("\t잘못된 속도값");
+					continue;
+				}
+			} else if(sel == 3) {
+				System.out.println("\t택시 이동중...");
+				// 설정된 방향으로 설정된 속도만큼 이동
+				if(dir==1) { 			// 동
+					x += speed;					
+				} else if(dir == 2) {	// 서 
+					x -= speed;
+				} else if(dir == 3) {	// 남
+					y -= speed;
+				} else if(dir == 4) {	// 북
+					y += speed;
+				}
+				// 이동완료, 요금 계산
+				move += speed;
 			}
-			else if(sel == 2) {}
-			else if(sel == 3) {}
+			
+			if(x == desX && y == desY) {
+				if(move %2 == 1) {
+					fee = 50 * (move / 2 + 1);
+				} else {
+					fee = 50* (move / 2);
+				}
+				System.out.printf("[목적지에 도착] %d번 움직였으므로 요금은 %d원\n", move, fee);
+				break;
+			}
 			
 		}
 
