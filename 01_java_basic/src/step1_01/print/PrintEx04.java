@@ -98,3 +98,11 @@ public class PrintEx04 {
 		System.out.println(st);
 	}
 }
+/*
+2020-11-16 정리
+date 객체(timestamp)란?
+SimpleDateFormat란?
+DecimalFormat이란?
+웹개발에서 날짜형식을 date 클래스로 가질 것인가 String으로 가질 것인가
+DecimalFormat은 보통 화면에서 보여줄때 웹언어로 처리함
+자바 API보는 연습 */
